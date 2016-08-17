@@ -4,8 +4,7 @@ var consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q
 var quArray = ["qu", "Qu", "QU"];
 var i = 0;
 
-var translator = function(input) {
-  debugger;
+var wordTranslator = function(input) {
   var translation = [];
   for (i = 0; i < input.length; i += 1) {
     if (vowels.includes(input[0])) {
@@ -23,13 +22,17 @@ var translator = function(input) {
   }
 };
 
-
 //user interface logic
 $(document).ready(function(){
   $("form").submit(function(event){
     event.preventDefault();
     var splitSentence = $("input#sentence").val();
-    var pigLatinSentence = translator(splitSentence);
+    var pigLatinSentence = wordTranslator(splitSentence);
+
+    // var wordArray = splitSentence.forEach(function(word) {
+    //   wordTranslator(word);
+    // });
+
     $("#output").text(pigLatinSentence);
   });
 });
